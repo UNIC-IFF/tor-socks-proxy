@@ -1,0 +1,38 @@
+FROM alpine
+MAINTAINER Antonios Inglezakis < inglezakis.a@unic.ac.cy >
+
+RUN apk update
+#installing Tor
+RUN apk add tor
+COPY configs/torrc_toronly /etc/tor/torrc
+
+# #installing polipo
+# WORKDIR /tmp
+
+# RUN apk add --no-cache build-base openssl
+# RUN set -xe\
+#     && curl --url https://codeload.github.com/jech/polipo/zip/master --output polipo.zip \
+#     && unzip polipo.zip \
+#     && cd polipo-master \
+#     && make \
+#     && install polipo /usr/local/bin/ \
+#     && cd ../ \
+#     && rm -rf polipo.zip polipo-master \
+#     && mkdir -p /usr/share/polipo/www /var/cache/polipo
+
+# RUN apk del build-base openssl
+
+# COPY configs/polipo.conf /etc/polipo/config
+
+# COPY scripts/run_proxies.sh /root/run_proxies.sh
+
+# EXPOSE 9050 8123
+EXPOSE 9050
+
+# RUN chmod +x /root/run_proxies.sh
+
+# CMD [ "/root/run_proxies.sh" ]
+WORKDIR /home/tor
+USER tor
+
+CMD tor -f /etc/tor/torrc
