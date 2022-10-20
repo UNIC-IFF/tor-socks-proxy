@@ -1,3 +1,5 @@
+:no_entry: [DEPRECATED] Active at https://github.com/UniversityOfNicosia/tor-socks-proxy 
+
 # TOR SOCKS Proxy Docker
 
 To run a TOR SOCKS proxy server in docker, one can either build the image following the guide below OR pull the image directly from [UNIC-IFF Dockerhub](https://hub.docker.com/orgs/uniciff/repositories).
